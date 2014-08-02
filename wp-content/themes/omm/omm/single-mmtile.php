@@ -5,8 +5,6 @@
 		<?php $terms = get_the_terms( $post->ID , 'mmtile_category', 'string' ); ?>
 		<?php $num_of_terms = count($terms); ?>
 		<?php $is_pub_date_displayed = get_post_meta( $post->ID, 'onioneye_publication_date', true ); ?>
-		<?php $client = get_post_meta( $post->ID, 'onioneye_client', true ); ?>
-		<?php $project_url = get_post_meta( $post->ID, 'onioneye_item_url', true ); ?>
 		<?php $soundcloud_url = get_post_meta( $post->ID, 'onioneye_soundcloud', true ); ?>
 		<?php $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true ); ?>
 		<?php $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true ); ?>

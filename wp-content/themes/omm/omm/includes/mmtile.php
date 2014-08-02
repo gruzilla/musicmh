@@ -32,9 +32,23 @@
 
 						<a class="project-link" href="<?php the_permalink(); ?>">
 
+							<?php $soundcloud_url = get_post_meta( $post->ID, 'onioneye_soundcloud', true ); ?>
+							<?php $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true ); ?>
+							<?php $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true ); ?>
+							<?php $color = get_post_meta( $post->ID, 'onioneye_color', true ); ?>
+
 							<?php if ($preview_img_url) { ?>
 
 								<div class="thumb-container">
+									<?php
+										if ($color) {
+											$dec = hex2rgb($color);
+											?>
+											<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(<?php
+												echo join(',', $dec); ?>, 0.5)"></div>';
+											<?php
+										}
+									?>
 									<?php
 										$thumb = oy_get_attachment_id_from_src( $preview_img_url );
 										$image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
