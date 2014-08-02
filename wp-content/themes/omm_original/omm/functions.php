@@ -3,19 +3,19 @@
 /* Set the content width based on the theme's design and stylesheet. */
 if( ! isset( $content_width ) )
     $content_width = 940;
-
+ 
 function oy_adjust_content_width() {
 
 	global $content_width;
-
+ 
     if( is_page_template( 'template-page-with-sidebar.php' ) ) {
     	$content_width = 628;
     }
-
+    
     if( is_singular( 'post' ) || is_home() ) {
     	$content_width = 705;
     }
-
+    
 }
 
 add_action( 'template_redirect', 'oy_adjust_content_width' );
@@ -38,20 +38,20 @@ require_once( get_template_directory() . '/functions/plugins.php' );
 
 // Adding WP 3+ Functions & Theme Support
 function oy_theme_support() {
-
-	add_theme_support('post-thumbnails', array( 'post', 'mmtile' ));
+	
+	add_theme_support('post-thumbnails', array( 'post', 'portfolio' ));
 	add_theme_support('custom-background');
 	add_theme_support('automatic-feed-links'); // rss thingy
 	add_theme_support('menus');            // wp menus
 	register_nav_menu('main', __( 'The main menu', 'onioneye' ));
-
+	
 	/* Allow for localization */
 	load_theme_textdomain ('onioneye');
-
+	
 }
 
 // launching this stuff after theme setup
-add_action('after_setup_theme', 'oy_theme_support');
+add_action('after_setup_theme', 'oy_theme_support');	
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -78,7 +78,7 @@ if(function_exists('add_image_size')) {
 	set_post_thumbnail_size(9999, 9999); // Default post thumbnail size
 	add_image_size('mid-size', 600, 9999); // Post thumbnail size
 	add_image_size('content-width', 940, 9999); // Permalink thumbnail size
-	add_image_size('full-size', 9999, 9999); // Full size image
+	add_image_size('full-size', 9999, 9999); // Full size image 
 	add_image_size('gallery-thumb', 480, 400, true); //change to false to disable hard cropping
 }
 
@@ -96,7 +96,7 @@ add_filter('pre_get_posts', 'tgm_cpt_search');
  */
 function tgm_cpt_search($query) {
     if (!is_admin() && $query->is_search)
-		$query->set('post_type', array('post', 'mmtile'));
+		$query->set('post_type', array('post', 'portfolio'));
     return $query;
 };
 
@@ -104,7 +104,7 @@ function tgm_cpt_search($query) {
 /*-----------------------------------------------------------------------------------*/
 /* Comment Layout
 /*-----------------------------------------------------------------------------------*/
-
+		
 function oy_post_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
@@ -130,7 +130,7 @@ function oy_post_comments($comment, $args, $depth) {
 		</article>
     <!-- </li> is added by wordpress automatically -->
 <?php
-}
+} 
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -170,7 +170,7 @@ class Nfr_Menu_Walker extends Walker_Nav_Menu{
         if ( is_array( $args[0] ) )
             $args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
 
-        //Adds the 'parent' class to the current item if it has children
+        //Adds the 'parent' class to the current item if it has children               
         if( ! empty( $children_elements[$element->$id_field] ) ) {
        		array_push($element->classes,'parent');
         }
@@ -341,10 +341,10 @@ add_filter('widget_text', 'do_shortcode');
 //Enable AutoEmbeds from Plain Text URLs in Text Widgets
 add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
 add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
-
+	
 // loading jquery reply elements on single pages automatically
 function oy_queue_js(){
-	if (!is_admin()){ if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) wp_enqueue_script('comment-reply'); }
+	if (!is_admin()){ if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) wp_enqueue_script('comment-reply'); } 
 }
 
 // reply on comments script
@@ -354,7 +354,7 @@ add_action('wp_print_scripts', 'oy_queue_js');
 // setup code for the metronet plugin, that lets you easily reorder posts by drag and drop
 add_filter( 'metronet_reorder_post_types', 'slug_set_reorder' );
 function slug_set_reorder( $post_types ) {
-    $post_types = array( 'mmtile' );
+    $post_types = array( 'portfolio' );
     return $post_types;
 }
 

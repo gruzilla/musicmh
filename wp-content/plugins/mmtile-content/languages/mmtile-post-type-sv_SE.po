@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MMTile Post Type\n"
+"POT-Creation-Date: 2013-02-19 11:32+0100\n"
+"PO-Revision-Date: 2013-02-19 11:46+0100\n"
+"Last-Translator: Andréas Lundgren <adevade@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: mmtile-post-type.php:65
+msgid "MMTile"
+msgstr "MMTile"
+
+#: mmtile-post-type.php:66 mmtile-post-type.php:230
+msgid "MMTile Item"
+msgstr "MMTileobjekt"
+
+#: mmtile-post-type.php:67
+msgid "Add New Item"
+msgstr "Lägg till nytt objekt"
+
+#: mmtile-post-type.php:68 mmtile-post-type.php:70
+msgid "Add New MMTile Item"
+msgstr "Lägg till nytt objekt i mmtilen"
+
+#: mmtile-post-type.php:69
+msgid "Edit MMTile Item"
+msgstr "Redigera mmtileobjekt"
+
+#: mmtile-post-type.php:71
+msgid "View Item"
+msgstr "Visa objekt"
+
+#: mmtile-post-type.php:72
+msgid "Search MMTile"
+msgstr "Sök i mmtile"
+
+#: mmtile-post-type.php:73
+msgid "No mmtile items found"
+msgstr "Inga objekt hittades."
+
+#: mmtile-post-type.php:74
+msgid "No mmtile items found in trash"
+msgstr "Inga objekt hittades i papperskorgen."
+
+#: mmtile-post-type.php:97 mmtile-post-type.php:111
+msgid "MMTile Tags"
+msgstr "MMTileetiketter"
+
+#: mmtile-post-type.php:98
+msgid "MMTile Tag"
+msgstr "MMTileetikett"
+
+#: mmtile-post-type.php:99
+msgid "Search MMTile Tags"
+msgstr "Sök bland mmtileetiketter"
+
+#: mmtile-post-type.php:100
+msgid "Popular MMTile Tags"
+msgstr "Populära mmtileetiketter"
+
+#: mmtile-post-type.php:101
+msgid "All MMTile Tags"
+msgstr "Alla mmtileetiketter"
+
+#: mmtile-post-type.php:102
+msgid "Parent MMTile Tag"
+msgstr "Förälder till mmtileetikett"
+
+#: mmtile-post-type.php:103
+msgid "Parent MMTile Tag:"
+msgstr "Förälder till mmtileetikett:"
+
+#: mmtile-post-type.php:104
+msgid "Edit MMTile Tag"
+msgstr "Redigera mmtileetikett"
+
+#: mmtile-post-type.php:105
+msgid "Update MMTile Tag"
+msgstr "Uppdatera mmtileetikett"
+
+#: mmtile-post-type.php:106
+msgid "Add New MMTile Tag"
+msgstr "Lägg till ny mmtileetikett"
+
+#: mmtile-post-type.php:107
+msgid "New MMTile Tag Name"
+msgstr "Nytt namn på mmtileetikett"
+
+#: mmtile-post-type.php:108
+msgid "Separate mmtile tags with commas"
+msgstr "Separera flera mmtileetiketter med komma"
+
+#: mmtile-post-type.php:109
+msgid "Add or remove mmtile tags"
+msgstr "Lägg till eller ta bort mmtileetiketter"
+
+#: mmtile-post-type.php:110
+msgid "Choose from the most used mmtile tags"
+msgstr "Välj från de populäraste mmtileetiketterna"
+
+#: mmtile-post-type.php:134 mmtile-post-type.php:148
+msgid "MMTile Categories"
+msgstr "MMTilekategorier"
+
+#: mmtile-post-type.php:135
+msgid "MMTile Category"
+msgstr "MMTilekategori"
+
+#: mmtile-post-type.php:136
+msgid "Search MMTile Categories"
+msgstr "Sök bland mmtilekategorier"
+
+#: mmtile-post-type.php:137
+msgid "Popular MMTile Categories"
+msgstr "Populära mmtilekategorier"
+
+#: mmtile-post-type.php:138
+msgid "All MMTile Categories"
+msgstr "Alla mmtilekategorier"
+
+#: mmtile-post-type.php:139
+msgid "Parent MMTile Category"
+msgstr "Förälder till mmtilekategori"
+
+#: mmtile-post-type.php:140
+msgid "Parent MMTile Category:"
+msgstr "Förälder till mmtilekategori:"
+
+#: mmtile-post-type.php:141
+msgid "Edit MMTile Category"
+msgstr "Redigera mmtilekategori"
+
+#: mmtile-post-type.php:142
+msgid "Update MMTile Category"
+msgstr "Uppdatera mmtilekategori"
+
+#: mmtile-post-type.php:143
+msgid "Add New MMTile Category"
+msgstr "Lägg till ny mmtilekategori"
+
+#: mmtile-post-type.php:144
+msgid "New MMTile Category Name"
+msgstr "Nytt namn på mmtilekategori"
+
+#: mmtile-post-type.php:145
+msgid "Separate mmtile categories with commas"
+msgstr "Separera flera mmtilekategorier med komma"
+
+#: mmtile-post-type.php:146
+msgid "Add or remove mmtile categories"
+msgstr "Lägg till eller ta bort mmtilekategorier"
+
+#: mmtile-post-type.php:147
+msgid "Choose from the most used mmtile categories"
+msgstr "Välj från de populäraste mmtilekategorierna"
+
+#: mmtile-post-type.php:174
+msgid "Thumbnail"
+msgstr "Miniatyrbild"
+
+#: mmtile-post-type.php:241
+msgid "MMTile Item Pending"
+msgstr "MMTileobjekt väntar på granskning"

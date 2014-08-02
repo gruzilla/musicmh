@@ -1,0 +1,198 @@
+# Copyright (C) 2013 MMTile Post Type
+# This file is distributed under the same license as the MMTile Post Type package.
+msgid ""
+msgstr ""
+"Project-Id-Version: MMTile Post Type 0.6.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/mmtile-post-type\n"
+"POT-Creation-Date: 2013-08-27 22:08:14+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: mmtile-post-type.php:100
+msgid "MMTile"
+msgstr ""
+
+#: mmtile-post-type.php:101 mmtile-post-type.php:333
+msgid "MMTile Item"
+msgstr ""
+
+#: mmtile-post-type.php:102
+msgid "Add New Item"
+msgstr ""
+
+#: mmtile-post-type.php:103 mmtile-post-type.php:105
+msgid "Add New MMTile Item"
+msgstr ""
+
+#: mmtile-post-type.php:104
+msgid "Edit MMTile Item"
+msgstr ""
+
+#: mmtile-post-type.php:106
+msgid "View Item"
+msgstr ""
+
+#: mmtile-post-type.php:107
+msgid "Search MMTile"
+msgstr ""
+
+#: mmtile-post-type.php:108
+msgid "No mmtile items found"
+msgstr ""
+
+#: mmtile-post-type.php:109
+msgid "No mmtile items found in trash"
+msgstr ""
+
+#: mmtile-post-type.php:143 mmtile-post-type.php:145
+msgid "MMTile Tags"
+msgstr ""
+
+#: mmtile-post-type.php:144
+msgid "MMTile Tag"
+msgstr ""
+
+#: mmtile-post-type.php:146
+msgid "Edit MMTile Tag"
+msgstr ""
+
+#: mmtile-post-type.php:147
+msgid "Update MMTile Tag"
+msgstr ""
+
+#: mmtile-post-type.php:148
+msgid "Add New MMTile Tag"
+msgstr ""
+
+#: mmtile-post-type.php:149
+msgid "New MMTile Tag Name"
+msgstr ""
+
+#: mmtile-post-type.php:150
+msgid "Parent MMTile Tag"
+msgstr ""
+
+#: mmtile-post-type.php:151
+msgid "Parent MMTile Tag:"
+msgstr ""
+
+#: mmtile-post-type.php:152
+msgid "All MMTile Tags"
+msgstr ""
+
+#: mmtile-post-type.php:153
+msgid "Search MMTile Tags"
+msgstr ""
+
+#: mmtile-post-type.php:154
+msgid "Popular MMTile Tags"
+msgstr ""
+
+#: mmtile-post-type.php:155
+msgid "Separate mmtile tags with commas"
+msgstr ""
+
+#: mmtile-post-type.php:156
+msgid "Add or remove mmtile tags"
+msgstr ""
+
+#: mmtile-post-type.php:157
+msgid "Choose from the most used mmtile tags"
+msgstr ""
+
+#: mmtile-post-type.php:158
+msgid "No mmtile tags found."
+msgstr ""
+
+#: mmtile-post-type.php:186 mmtile-post-type.php:188
+msgid "MMTile Categories"
+msgstr ""
+
+#: mmtile-post-type.php:187
+msgid "MMTile Category"
+msgstr ""
+
+#: mmtile-post-type.php:189
+msgid "Edit MMTile Category"
+msgstr ""
+
+#: mmtile-post-type.php:190
+msgid "Update MMTile Category"
+msgstr ""
+
+#: mmtile-post-type.php:191
+msgid "Add New MMTile Category"
+msgstr ""
+
+#: mmtile-post-type.php:192
+msgid "New MMTile Category Name"
+msgstr ""
+
+#: mmtile-post-type.php:193
+msgid "Parent MMTile Category"
+msgstr ""
+
+#: mmtile-post-type.php:194
+msgid "Parent MMTile Category:"
+msgstr ""
+
+#: mmtile-post-type.php:195
+msgid "All MMTile Categories"
+msgstr ""
+
+#: mmtile-post-type.php:196
+msgid "Search MMTile Categories"
+msgstr ""
+
+#: mmtile-post-type.php:197
+msgid "Popular MMTile Categories"
+msgstr ""
+
+#: mmtile-post-type.php:198
+msgid "Separate mmtile categories with commas"
+msgstr ""
+
+#: mmtile-post-type.php:199
+msgid "Add or remove mmtile categories"
+msgstr ""
+
+#: mmtile-post-type.php:200
+msgid "Choose from the most used mmtile categories"
+msgstr ""
+
+#: mmtile-post-type.php:201
+msgid "No mmtile categories found."
+msgstr ""
+
+#: mmtile-post-type.php:257
+msgid "Thumbnail"
+msgstr ""
+
+#: mmtile-post-type.php:345
+msgid "MMTile Item Pending"
+msgid_plural "MMTile Items Pending"
+msgstr[0] ""
+msgstr[1] ""
+#. Plugin Name of the plugin/theme
+msgid "MMTile Post Type"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wptheming.com/mmtile-post-type/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Enables a mmtile post type and taxonomies."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Devin Price"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.wptheming.com/"
+msgstr ""

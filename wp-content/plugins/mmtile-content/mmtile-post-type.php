@@ -1,26 +1,26 @@
 <?php
 /**
  *
- * Notice: This is a forked version of the plugin, originally developed by Devin Price. The original plugin is available on wordpress.org and is called "Portfolio Post Type." 
+ * Notice: This is a forked version of the plugin, originally developed by Devin Price. The original plugin is available on wordpress.org and is called "MMTile Post Type."
  *
  * @original-author: Devin Price
- * @link: http://wptheming.com/portfolio-post-type/
+ * @link: http://wptheming.com/mmtile-post-type/
  *
  * @wordpress-plugin
- * Plugin Name: Portfolio Content
- * Description: Enables a portfolio post type and taxonomies.
+ * Plugin Name: MMTile Content
+ * Description: Enables a mmtile post type and taxonomies.
  * Version:     1.0.0
  * Author:      OnionEye
  * Author URI:  http://themeforest.net/user/onioneye
- * Text Domain: portfolioposttype
+ * Text Domain: mmtileposttype
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path: /languages
  */
 
-if ( ! class_exists( 'Portfolio_Post_Type' ) ) :
+if ( ! class_exists( 'MMTile_Post_Type' ) ) :
 
-class Portfolio_Post_Type {
+class MMTile_Post_Type {
 
 	public function __construct() {
 
@@ -30,34 +30,34 @@ class Portfolio_Post_Type {
 		// Run when the plugin is activated
 		register_activation_hook( __FILE__, array( $this, 'plugin_activation' ) );
 
-		// Add the portfolio post type and taxonomies
-		add_action( 'init', array( $this, 'portfolio_init' ) );
+		// Add the mmtile post type and taxonomies
+		add_action( 'init', array( $this, 'mmtile_init' ) );
 
-		// Thumbnail support for portfolio posts
-		add_theme_support( 'post-thumbnails', array( 'portfolio' ) );
+		// Thumbnail support for mmtile posts
+		add_theme_support( 'post-thumbnails', array( 'mmtile' ) );
 
 		// Add thumbnails to column view
-		add_filter( 'manage_edit-portfolio_columns', array( $this, 'add_thumbnail_column'), 10, 1 );
+		add_filter( 'manage_edit-mmtile_columns', array( $this, 'add_thumbnail_column'), 10, 1 );
 		add_action( 'manage_posts_custom_column', array( $this, 'display_thumbnail' ), 10, 1 );
 
 		// Allow filtering of posts by taxonomy in the admin view
 		add_action( 'restrict_manage_posts', array( $this, 'add_taxonomy_filters' ) );
 
-		// Show portfolio post counts in the dashboard
-		add_action( 'right_now_content_table_end', array( $this, 'add_portfolio_counts' ) );
+		// Show mmtile post counts in the dashboard
+		add_action( 'right_now_content_table_end', array( $this, 'add_mmtile_counts' ) );
 
 		// Add taxonomy terms as body classes
 		add_filter( 'body_class', array( $this, 'add_body_classes' ) );
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Load the plugin text domain for translation.
 	 */
 	public function load_textdomain() {
 
-		$domain = 'portfolioposttype';
+		$domain = 'mmtileposttype';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
@@ -65,26 +65,26 @@ class Portfolio_Post_Type {
 	}
 
 	/**
-	 * Flushes rewrite rules on plugin activation to ensure portfolio posts don't 404.
+	 * Flushes rewrite rules on plugin activation to ensure mmtile posts don't 404.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/flush_rewrite_rules
 	 *
-	 * @uses Portfolio_Post_Type::portfolio_init()
+	 * @uses MMTile_Post_Type::mmtile_init()
 	 */
 	public function plugin_activation() {
 		$this->load_textdomain();
-		$this->portfolio_init();
+		$this->mmtile_init();
 		flush_rewrite_rules();
 	}
 
 	/**
 	 * Initiate registrations of post type and taxonomies.
 	 *
-	 * @uses Portfolio_Post_Type::register_post_type()
-	 * @uses Portfolio_Post_Type::register_taxonomy_tag()
-	 * @uses Portfolio_Post_Type::register_taxonomy_category()
+	 * @uses MMTile_Post_Type::register_post_type()
+	 * @uses MMTile_Post_Type::register_taxonomy_tag()
+	 * @uses MMTile_Post_Type::register_taxonomy_category()
 	 */
-	public function portfolio_init() {
+	public function mmtile_init() {
 		$this->register_post_type();
 		$this->register_taxonomy_category();
 	}
@@ -95,26 +95,26 @@ class Portfolio_Post_Type {
 	 * @return array Taxonomy slugs.
 	 */
 	protected function get_taxonomies() {
-		return array( 'portfolio_category' );
+		return array( 'mmtile_category' );
 	}
 
 	/**
-	 * Enable the Portfolio custom post type.
+	 * Enable the MMTile custom post type.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
 	protected function register_post_type() {
 		$labels = array(
-			'name'               => __( 'Portfolio', 'portfolioposttype' ),
-			'singular_name'      => __( 'Portfolio Item', 'portfolioposttype' ),
-			'add_new'            => __( 'Add New Item', 'portfolioposttype' ),
-			'add_new_item'       => __( 'Add New Portfolio Item', 'portfolioposttype' ),
-			'edit_item'          => __( 'Edit Portfolio Item', 'portfolioposttype' ),
-			'new_item'           => __( 'Add New Portfolio Item', 'portfolioposttype' ),
-			'view_item'          => __( 'View Item', 'portfolioposttype' ),
-			'search_items'       => __( 'Search Portfolio', 'portfolioposttype' ),
-			'not_found'          => __( 'No portfolio items found', 'portfolioposttype' ),
-			'not_found_in_trash' => __( 'No portfolio items found in trash', 'portfolioposttype' ),
+			'name'               => __( 'MMTile', 'mmtileposttype' ),
+			'singular_name'      => __( 'MMTile Item', 'mmtileposttype' ),
+			'add_new'            => __( 'Add New Item', 'mmtileposttype' ),
+			'add_new_item'       => __( 'Add New MMTile Item', 'mmtileposttype' ),
+			'edit_item'          => __( 'Edit MMTile Item', 'mmtileposttype' ),
+			'new_item'           => __( 'Add New MMTile Item', 'mmtileposttype' ),
+			'view_item'          => __( 'View Item', 'mmtileposttype' ),
+			'search_items'       => __( 'Search MMTile', 'mmtileposttype' ),
+			'not_found'          => __( 'No mmtile items found', 'mmtileposttype' ),
+			'not_found_in_trash' => __( 'No mmtile items found in trash', 'mmtileposttype' ),
 		);
 
 		$args = array(
@@ -127,39 +127,39 @@ class Portfolio_Post_Type {
 				'revisions',
 			),
 			'capability_type' => 'post',
-			'rewrite'         => array( 'slug' => 'portfolio', ), // Permalinks format
+			'rewrite'         => array( 'slug' => 'mmtile', ), // Permalinks format
 			'menu_position'   => 5,
 			'has_archive'     => true,
 		);
 
-		$args = apply_filters( 'portfolioposttype_args', $args );
+		$args = apply_filters( 'mmtileposttype_args', $args );
 
-		register_post_type( 'portfolio', $args );
+		register_post_type( 'mmtile', $args );
 	}
 
 	/**
-	 * Register a taxonomy for Portfolio Categories.
+	 * Register a taxonomy for MMTile Categories.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/register_taxonomy
 	 */
 	protected function register_taxonomy_category() {
 		$labels = array(
-			'name'                       => __( 'Portfolio Categories', 'portfolioposttype' ),
-			'singular_name'              => __( 'Portfolio Category', 'portfolioposttype' ),
-			'menu_name'                  => __( 'Portfolio Categories', 'portfolioposttype' ),
-			'edit_item'                  => __( 'Edit Portfolio Category', 'portfolioposttype' ),
-			'update_item'                => __( 'Update Portfolio Category', 'portfolioposttype' ),
-			'add_new_item'               => __( 'Add New Portfolio Category', 'portfolioposttype' ),
-			'new_item_name'              => __( 'New Portfolio Category Name', 'portfolioposttype' ),
-			'parent_item'                => __( 'Parent Portfolio Category', 'portfolioposttype' ),
-			'parent_item_colon'          => __( 'Parent Portfolio Category:', 'portfolioposttype' ),
-			'all_items'                  => __( 'All Portfolio Categories', 'portfolioposttype' ),
-			'search_items'               => __( 'Search Portfolio Categories', 'portfolioposttype' ),
-			'popular_items'              => __( 'Popular Portfolio Categories', 'portfolioposttype' ),
-			'separate_items_with_commas' => __( 'Separate portfolio categories with commas', 'portfolioposttype' ),
-			'add_or_remove_items'        => __( 'Add or remove portfolio categories', 'portfolioposttype' ),
-			'choose_from_most_used'      => __( 'Choose from the most used portfolio categories', 'portfolioposttype' ),
-			'not_found'                  => __( 'No portfolio categories found.', 'portfolioposttype' ),
+			'name'                       => __( 'MMTile Categories', 'mmtileposttype' ),
+			'singular_name'              => __( 'MMTile Category', 'mmtileposttype' ),
+			'menu_name'                  => __( 'MMTile Categories', 'mmtileposttype' ),
+			'edit_item'                  => __( 'Edit MMTile Category', 'mmtileposttype' ),
+			'update_item'                => __( 'Update MMTile Category', 'mmtileposttype' ),
+			'add_new_item'               => __( 'Add New MMTile Category', 'mmtileposttype' ),
+			'new_item_name'              => __( 'New MMTile Category Name', 'mmtileposttype' ),
+			'parent_item'                => __( 'Parent MMTile Category', 'mmtileposttype' ),
+			'parent_item_colon'          => __( 'Parent MMTile Category:', 'mmtileposttype' ),
+			'all_items'                  => __( 'All MMTile Categories', 'mmtileposttype' ),
+			'search_items'               => __( 'Search MMTile Categories', 'mmtileposttype' ),
+			'popular_items'              => __( 'Popular MMTile Categories', 'mmtileposttype' ),
+			'separate_items_with_commas' => __( 'Separate mmtile categories with commas', 'mmtileposttype' ),
+			'add_or_remove_items'        => __( 'Add or remove mmtile categories', 'mmtileposttype' ),
+			'choose_from_most_used'      => __( 'Choose from the most used mmtile categories', 'mmtileposttype' ),
+			'not_found'                  => __( 'No mmtile categories found.', 'mmtileposttype' ),
 		);
 
 		$args = array(
@@ -169,14 +169,14 @@ class Portfolio_Post_Type {
 			'show_ui'           => true,
 			'show_tagcloud'     => true,
 			'hierarchical'      => true,
-			'rewrite'           => array( 'slug' => 'portfolio_category' ),
+			'rewrite'           => array( 'slug' => 'mmtile_category' ),
 			'show_admin_column' => true,
 			'query_var'         => true,
 		);
 
-		$args = apply_filters( 'portfolioposttype_category_args', $args );
+		$args = apply_filters( 'mmtileposttype_category_args', $args );
 
-		register_taxonomy( 'portfolio_category', array( 'portfolio' ), $args );
+		register_taxonomy( 'mmtile_category', array( 'mmtile' ), $args );
 	}
 
 	/**
@@ -205,7 +205,7 @@ class Portfolio_Post_Type {
 	}
 
 	/**
-	 * Add columns to Portfolio list screen.
+	 * Add columns to MMTile list screen.
 	 *
 	 * @link http://wptheming.com/2010/07/column-edit-pages/
 	 *
@@ -214,7 +214,7 @@ class Portfolio_Post_Type {
 	 * @return array Amended columns.
 	 */
 	public function add_thumbnail_column( $columns ) {
-		$column_thumbnail = array( 'thumbnail' => __( 'Thumbnail', 'portfolioposttype' ) );
+		$column_thumbnail = array( 'thumbnail' => __( 'Thumbnail', 'mmtileposttype' ) );
 		return array_slice( $columns, 0, 2, true ) + $column_thumbnail + array_slice( $columns, 1, null, true );
 	}
 
@@ -235,7 +235,7 @@ class Portfolio_Post_Type {
 	}
 
 	/**
-	 * Add taxonomy filters to the portfolio admin page.
+	 * Add taxonomy filters to the mmtile admin page.
 	 *
 	 * Code artfully lifted from http://pippinsplugins.com/
 	 *
@@ -248,7 +248,7 @@ class Portfolio_Post_Type {
 		$taxonomies = $this->get_taxonomies();
 
 		// Must set this to the post type you want the filter(s) displayed on
-		if ( 'portfolio' != $typenow ) {
+		if ( 'mmtile' != $typenow ) {
 			return;
 		}
 
@@ -261,7 +261,7 @@ class Portfolio_Post_Type {
 				return;
 			}
 			echo '<select name="' . esc_attr( $tax_slug ) . '" id="' . esc_attr( $tax_slug ) . '" class="postform">';
-			echo '<option value="0">' . __( 'View all categories', 'portfolioposttype' ) . '</option>';
+			echo '<option value="0">' . __( 'View all categories', 'mmtileposttype' ) . '</option>';
 			foreach ( $terms as $term ) {
 				printf(
 					'<option value="%s"%s />%s</option>',
@@ -275,22 +275,22 @@ class Portfolio_Post_Type {
 	}
 
 	/**
-	 * Add Portfolio count to "Right Now" dashboard widget.
+	 * Add MMTile count to "Right Now" dashboard widget.
 	 *
-	 * @return null Return early if portfolio post type does not exist.
+	 * @return null Return early if mmtile post type does not exist.
 	 */
-	public function add_portfolio_counts() {
-		if ( ! post_type_exists( 'portfolio' ) ) {
+	public function add_mmtile_counts() {
+		if ( ! post_type_exists( 'mmtile' ) ) {
 			return;
 		}
 
-		$num_posts = wp_count_posts( 'portfolio' );
+		$num_posts = wp_count_posts( 'mmtile' );
 
 		// Published items
-		$href = 'edit.php?post_type=portfolio';
+		$href = 'edit.php?post_type=mmtile';
 		$num  = number_format_i18n( $num_posts->publish );
 		$num  = $this->link_if_can_edit_posts( $num, $href );
-		$text = _n( 'Portfolio Item', 'Portfolio Items', intval( $num_posts->publish ) );
+		$text = _n( 'MMTile Item', 'MMTile Items', intval( $num_posts->publish ) );
 		$text = $this->link_if_can_edit_posts( $text, $href );
 		$this->display_dashboard_count( $num, $text );
 
@@ -299,10 +299,10 @@ class Portfolio_Post_Type {
 		}
 
 		// Pending items
-		$href = 'edit.php?post_status=pending&amp;post_type=portfolio';
+		$href = 'edit.php?post_status=pending&amp;post_type=mmtile';
 		$num  = number_format_i18n( $num_posts->pending );
 		$num  = $this->link_if_can_edit_posts( $num, $href );
-		$text = _n( 'Portfolio Item Pending', 'Portfolio Items Pending', intval( $num_posts->pending ) );
+		$text = _n( 'MMTile Item Pending', 'MMTile Items Pending', intval( $num_posts->pending ) );
 		$text = $this->link_if_can_edit_posts( $text, $href );
 		$this->display_dashboard_count( $num, $text );
 	}
@@ -331,14 +331,14 @@ class Portfolio_Post_Type {
 	protected function display_dashboard_count( $number, $label ) {
 		?>
 		<tr>
-			<td class="first b b-portfolio"><?php echo $number; ?></td>
-			<td class="t portfolio"><?php echo $label; ?></td>
+			<td class="first b b-mmtile"><?php echo $number; ?></td>
+			<td class="t mmtile"><?php echo $label; ?></td>
 		</tr>
 		<?php
 	}
 
 }
 
-new Portfolio_Post_Type;
+new MMTile_Post_Type;
 
 endif;

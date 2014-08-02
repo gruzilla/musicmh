@@ -44,51 +44,51 @@ function my_theme_register_required_plugins() {
 
 		// This is an example of how to include a plugin pre-packaged with a theme
 		array(
-			'name'     				=> 'MMTile Content', // The plugin name
-			'slug'     				=> 'mmtile-content', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/plugins/mmtile-content.zip', // The plugin source
+			'name'     				=> 'Portfolio Content', // The plugin name
+			'slug'     				=> 'portfolio-content', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/plugins/portfolio-content.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
 			'version' 				=> '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
 		),
-
+		
 		array(
-			'name'     				=> 'MMTile Custom Metaboxes', // The plugin name
-			'slug'     				=> 'mmtile-custom-metaboxes', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/plugins/mmtile-custom-metaboxes.zip', // The plugin source
+			'name'     				=> 'Portfolio Custom Metaboxes', // The plugin name
+			'slug'     				=> 'portfolio-custom-metaboxes', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/plugins/portfolio-custom-metaboxes.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
 			'version' 				=> '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
 		),
-
+		
 		array(
 			'name' 		=> 'WP Retina 2x',
 			'slug' 		=> 'wp-retina-2x',
 			'required' 	=> false,
 		),
-
+		
 		array(
 			'name' 		=> 'Responsive Lightbox',
 			'slug' 		=> 'responsive-lightbox',
 			'required' 	=> false,
 		),
-
+				
 		array(
 			'name' 		=> 'Meta Slider',
 			'slug' 		=> 'ml-slider',
 			'required' 	=> false,
 		),
-
+				
 		array(
 			'name' 		=> 'KC Media Enhancements',
 			'slug' 		=> 'kc-media-enhancements',
 			'required' 	=> false,
 		),
-
+		
 		array(
 			'name' 		=> 'WP Easy Columns',
 			'slug' 		=> 'easy-columns',
