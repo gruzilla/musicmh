@@ -1,0 +1,15 @@
+== Omm Changelog ==
+
+
+
+= 25 Apr 2014 - version 1.0.1 =
+
+* MODIFIED:
+
+- style.css - altered the code of the theme’s main columns, to make them use floats, instead of table cells, for achieving the two-columned grid look. Slightly changed the code for the Contact Form 7 plugin as well.
+- header.php - changed the .table element, to drop the usage of CSS tables, and converted it to a simple display block element, with a class of “full-height”. Also, introduced some new code for handling the case where the search function is disabled by the site admin. 
+- /functions/options.php - introduced a new option for disabling the theme’s search function.
+- /js/jquery.footer.custom.js - slightly changed the code for setting the page height. 
+
+
+
