@@ -38,49 +38,57 @@
 					$preview_img_url = $preview_img['0'];
 					$image_full_width = $preview_img[1];
 					$image_full_height = $preview_img[2];
-				?>
+
+                    $num_of_terms = null;
+                    $is_pub_date_displayed = null;
+                    $soundcloud_url = null;
+                    $gumroad_url = null;
+                    $bpm = null;
+                    $color = null;
+                    $switchspeed = null;
+                    $animationDuration = null;
+                    $image0 = null;
+                    $image1 = null;
+                    $image2 = null;
+
+                    switch ($post->post_type) {
+                        case 'mmtile':
+                            $num_of_terms = count($terms);
+                            $is_pub_date_displayed = get_post_meta( $post->ID, 'onioneye_publication_date', true );
+                            $soundcloud_url = get_post_meta( $post->ID, 'onioneye_soundcloud', true );
+                            $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true );
+                            $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true );
+                            $color = get_post_meta( $post->ID, 'onioneye_color', true );
+
+                            $onclick = 'this.classList.toggle(\'tile-flip-hover\')';
+                            break;
+                        case 'mmimagetile':
+                            $switchspeed = get_post_meta( $post->ID, 'onioneye_switchspeed', true );
+                            if (is_numeric($switchspeed)) {
+                                $switchspeed = intval($switchspeed);
+                            } else {
+                                $switchspeed = 5000;
+                            }
+                            $animationDuration = ceil($switchspeed / 5);
+                            $image0 = get_post_meta( $post->ID, 'onioneye_image0', true );
+                            $image1 = get_post_meta( $post->ID, 'onioneye_image1', true );
+                            $image2 = get_post_meta( $post->ID, 'onioneye_image2', true );
+
+                            $link = get_post_meta( $post->ID, 'onioneye_link', true );
+                            if (empty($link) || strtolower(substr($link, 0, 4)) !== 'http') {
+                                $onclick = 'return false;';
+                            } else {
+                                $onclick = 'window.location.href=\''.htmlspecialchars($link, ENT_QUOTES).'\'';
+                            }
+                            break;
+                    }
+                    ?>
 
 					<div data-id="id-<?php echo $post->ID; ?>" class="isotope-item mmtile-item mmtile-item-<?php the_ID(); ?> <?php $terms = get_the_terms( $post -> ID, 'mmtile_category' ); if ( !empty( $terms ) ) { foreach( $terms as $term ) { echo $term -> slug . ' '; } } ?>">
 
-						<div class="project-link" style="cursor: pointer" onclick="this.classList.toggle('tile-flip-hover')">
+						<div class="project-link" style="cursor: pointer" onclick="<?php echo $onclick ?>">
 
                             <?php
-
-                            $num_of_terms = null;
-                            $is_pub_date_displayed = null;
-                            $soundcloud_url = null;
-                            $gumroad_url = null;
-                            $bpm = null;
-                            $color = null;
-                            $switchspeed = null;
-                            $animationDuration = null;
-                            $image0 = null;
-                            $image1 = null;
-                            $image2 = null;
-
-                            switch ($post->post_type) {
-                                case 'mmtile':
-                                    $num_of_terms = count($terms);
-                                    $is_pub_date_displayed = get_post_meta( $post->ID, 'onioneye_publication_date', true );
-                                    $soundcloud_url = get_post_meta( $post->ID, 'onioneye_soundcloud', true );
-                                    $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true );
-                                    $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true );
-                                    $color = get_post_meta( $post->ID, 'onioneye_color', true );
-                                    break;
-                                case 'mmimagetile':
-                                    $switchspeed = get_post_meta( $post->ID, 'onioneye_switchspeed', true );
-                                    if (is_numeric($switchspeed)) {
-                                        $switchspeed = intval($switchspeed);
-                                    } else {
-                                        $switchspeed = 5000;
-                                    }
-                                    $animationDuration = ceil($switchspeed / 5);
-                                    $image0 = get_post_meta( $post->ID, 'onioneye_image0', true );
-                                    $image1 = get_post_meta( $post->ID, 'onioneye_image1', true );
-                                    $image2 = get_post_meta( $post->ID, 'onioneye_image2', true );
-                                    break;
-                            }
-
                             if ($image0 || $image1 || $image2) {
                             ?>
                                 <div class="thumb_container">

@@ -55,7 +55,14 @@ function mmimagetile_alerts_metaboxes( $meta_boxes ) {
                 'name' => __('Switch speed', 'switchspeed'),
                 'desc' => __('How many milliseconds should the animation pause between every image.'),
                 'id' => $prefix . 'switchspeed',
+                'default' => '5000',
                 'type' => 'text',
+            ),
+            array(
+                'name' => __('Link URL', 'link'),
+                'desc' => __('To which URL this tile should link.'),
+                'id' => $prefix . 'link',
+                'type' => 'text_url',
             ),
         ),
     );
