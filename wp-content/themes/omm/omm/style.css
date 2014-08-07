@@ -594,7 +594,8 @@
 			.header-title,
 			.menu a,
 			.mmtile-filter a,
-			.social-networking a,
+            .mmtile-filter span,
+            .social-networking a,
 			#main-search-form #main-search-field {
 				display: block;
 				position: relative;
@@ -863,7 +864,8 @@
 						display: none; /* hide the bottom dividers in the mobile menu */
 					}
 		    	.mobile-menu .menu a,
-		    	.mobile-menu .mmtile-filter a,
+                .mobile-menu .mmtile-filter a,
+                .mobile-menu .mmtile-filter span,
 		    	.mobile-menu .social-networking a {
 			   		color: #a7abb1;
 					text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
@@ -2724,4 +2726,15 @@
 .project-link .mm-gallery img {
     display: none;
     z-index: 0;
+}
+
+/*  24. hacked terms list
+    ........................................................................................................................................ */
+
+.mmtile-filter .child {
+    margin-left: 10px;
+}
+
+.mmtile-filter li span {
+    margin-top: 10px;
 }

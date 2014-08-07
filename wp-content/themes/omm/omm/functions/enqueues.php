@@ -21,7 +21,7 @@ function oy_add_ie_styles() {
 function oy_add_fonts() {
 
     $protocol = is_ssl() ? 'https' : 'http';
-    wp_enqueue_style( 'oy-open-sans', "$protocol://fonts.googleapis.com/css?family=Opem+Sans:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
+    wp_enqueue_style( 'oy-open-sans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
     wp_enqueue_style( 'oy-teko', "$protocol://fonts.googleapis.com/css?family=Teko:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
 
 }
