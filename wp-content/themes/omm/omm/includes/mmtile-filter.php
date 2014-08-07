@@ -1,4 +1,30 @@
 <?php $terms = get_terms('mmtile_category', array('orderby' => 'none')); ?>
+<?php
+    $children = $parents = array();
+    foreach ($terms as $term) {
+        if (empty($term->parent)) {
+            $parents[] = $term;
+        } else {
+            $pId = intval($term->parent);
+            if (!isset($children[$pId])) {
+                $children[$pId] = array();
+            }
+            $children[$pId][] = $term;
+        }
+    }
+
+    $terms = array();
+    foreach ($parents as $parent) {
+        $terms[] = $parent;
+        $pId = intval($parent->term_id);
+        if (!isset($children[$pId])) {
+            continue;
+        }
+        foreach ($children[$pId] as $term) {
+            $terms[] = $term;
+        }
+    }
+?>
 <?php $category_count = count($terms); ?>
 
 <?php // Display the category filter, if at least one category exists. ?>

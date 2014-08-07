@@ -56,14 +56,12 @@
 			<div class="dropdown-content">
 
 				<div class="mobile-menu">
-					<?php if($is_menu_existent) { ?>
+                    <?php if($category_count) { ?>
+                        <?php get_template_part('includes/mmtile-filter'); ?>
+                    <?php } ?>
+
+                    <?php if($is_menu_existent) { ?>
 						<?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => 'nav', 'menu' => 'custom_menu', 'container_class' => 'group', 'depth' => 2, 'walker' => new Nfr_Menu_Walker() ) ); ?>
-					<?php } ?>
-
-					<?php if($category_count) { ?>
-
-						<?php get_template_part('includes/mmtile-filter'); ?>
-
 					<?php } ?>
 
 					<?php if($is_social_existent) { ?>
@@ -137,17 +135,17 @@
 					</div>
 				<?php } ?>
 
-				<?php if ($is_menu_existent) { ?>
+                <?php if($category_count) { ?>
+
+                    <?php get_template_part('includes/mmtile-filter'); ?>
+
+                <?php } ?>
+
+                <?php if ($is_menu_existent) { ?>
 
 					<p class="header-title"><?php _e( 'Menu', 'onioneye' ); ?></p>
 
 					<?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => 'nav', 'menu' => 'custom_menu', 'container_class' => 'group', 'menu_class' => 'menu sep', 'depth' => 2, 'walker' => new Nfr_Menu_Walker() ) ); ?>
-
-				<?php } ?>
-
-				<?php if($category_count) { ?>
-
-					<?php get_template_part('includes/mmtile-filter'); ?>
 
 				<?php } ?>
 
