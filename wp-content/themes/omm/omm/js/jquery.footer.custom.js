@@ -23,8 +23,30 @@
 		$('.mmtile-filter a').click(function(e) {
 			e.preventDefault();
 
-			var selector = $(this).attr('data-filter');
-		 	$mmtileContainer.isotope({ filter: selector });
+            var selector = $(this).attr('data-filter');
+
+            if (selector == '*') {
+                $('.mmtile-filter li').removeClass('active');
+            } else {
+                $('.mmtile-filter li:first-child').removeClass('active');
+            }
+
+            $(this).parent().toggleClass('active');
+            var $active = $('.mmtile-filter li.active a');
+
+            var filter = [];
+
+            if ($active.length === 0) {
+                $('.mmtile-filter li:first-child').addClass('active');
+                filter.push('*');
+            } else {
+                $active.each(function() {
+                    filter.push($(this).attr('data-filter'));
+                });
+            }
+
+
+		 	$mmtileContainer.isotope({ filter: filter.join(', ') });
 
 			if($('body').hasClass('single-mmtile') || Modernizr.mq('only screen and (max-width: 1220px)')) {
 				$('html, body').animate({
@@ -33,12 +55,6 @@
 			}
 		});
 	}
-
-	/* Reset the active class on all the buttons and assign it to the currently active category */
-	$('.mmtile-filter li a').click(function() {
-		$('.mmtile-filter li').removeClass('active');
-		$(this).parent().addClass('active');
-	});
 
 	/* Initialize Isotope */
 	$mmtileContainer.imagesLoaded(function() {
