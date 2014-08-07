@@ -4,15 +4,20 @@
 
 	if(is_tax()) { // is category page
 		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-		$args = array( 'post_type' => array('mmtile', 'mmimagetile'), 'mmtile_category' => $term -> slug, 'posts_per_page' => -1, 'orderby' => 'menu_order' );
+		$args = array( 'post_type' => 'mmtile', 'mmtile_category' => $term -> slug, 'posts_per_page' => -1, 'orderby' => 'menu_order' );
 	}
 	else { // is main mmtile page
-		$args = array( 'post_type' => array('mmtile', 'mmimagetile'), 'posts_per_page' => -1, 'orderby' => 'menu_order' );
+		$args = array( 'post_type' => 'mmtile', 'posts_per_page' => -1, 'orderby' => 'menu_order' );
 	}
 
-   	$loop = new WP_Query( $args );
+    $loop = new WP_Query( $args );
 
-	if($loop->have_posts()) {
+    $args2 = array( 'post_type' => 'mmimagetile', 'posts_per_page' => -1, 'orderby' => 'menu_order' );
+
+    $loop2 = new WP_Query($args2);
+
+
+	if ($loop->have_posts()) {
 ?>
 
 	<div class="pf-gallery-container">
@@ -21,8 +26,14 @@
 
 				<?php
 				//output the latest projects from the 'my_mmtile' custom post type
-				while ($loop->have_posts()) {
-                    $loop->the_post();
+                for ($i = 0; $i < $loop->post_count + $loop2->post_count; $i++) {
+
+                    if (1 === ($i % 2) && $loop2->have_posts()) {
+                        $loop2->the_post();
+                    } else {
+                        $loop->the_post();
+                    }
+
 					$preview_img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full-size' );
 					$preview_img_url = $preview_img['0'];
 					$image_full_width = $preview_img[1];
@@ -34,6 +45,18 @@
 						<div class="project-link" style="cursor: pointer" onclick="this.classList.toggle('tile-flip-hover')">
 
                             <?php
+
+                            $num_of_terms = null;
+                            $is_pub_date_displayed = null;
+                            $soundcloud_url = null;
+                            $gumroad_url = null;
+                            $bpm = null;
+                            $color = null;
+                            $switchspeed = null;
+                            $animationDuration = null;
+                            $image0 = null;
+                            $image1 = null;
+                            $image2 = null;
 
                             switch ($post->post_type) {
                                 case 'mmtile':
@@ -156,7 +179,7 @@
 											<?php // If the original width of the thumbnail doesn't match the width of the slider, resize it; otherwise, display it in original size ?>
 											<?php if( $image_full_width > $desired_width || $image_full_height > $desired_height ) { ?>
 
-												<img class="preview-img" src="<?php echo $image[url]; ?>" alt="<?php the_title(); ?>" />
+												<img class="preview-img" src="<?php echo $image['url']; ?>" alt="<?php the_title(); ?>" />
 
 											<?php } else { ?>
 
