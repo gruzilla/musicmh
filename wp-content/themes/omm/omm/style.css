@@ -2746,3 +2746,22 @@
 .mmtile-filter li span {
     margin-top: 10px;
 }
+
+/*  25. custom css classes for styling rich-text
+    ........................................................................................................................................ */
+p.license-group {
+    background-color: #bec8c8;
+    padding: 0 0 1em 0;
+    margin: 0 0 1.5em 0;
+}
+
+h3.license-group,
+h4.license-group,
+h5.license-group {
+    font-family: 'Teko', 'Open Sans', sans-serif;
+    background-color: #bec8c8;
+    margin: 0;
+    padding-top: 1em;
+    font-size: 2em;
+    text-transform: uppercase;
+}

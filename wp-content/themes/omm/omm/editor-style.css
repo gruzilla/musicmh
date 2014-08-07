@@ -1,0 +1,19 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p.license-group {
+    background-color: #bec8c8;
+    margin: 0 0 1em 0;
+}
+
+h3.license-group,
+h4.license-group,
+h5.license-group {
+    font-family: 'Teko', 'Open Sans', sans-serif;
+    background-color: #bec8c8;
+    margin: 0;
+    padding-top: 1em;
+    font-size: 2em;
+    text-transform: uppercase;
+}
