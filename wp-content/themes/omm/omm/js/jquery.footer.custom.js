@@ -45,8 +45,13 @@
                 });
             }
 
+            /* or strategy */
+            // var strategy = ', ';
 
-		 	$mmtileContainer.isotope({ filter: filter.join(', ') });
+            /* and strategy */
+            var strategy = '';
+
+		 	$mmtileContainer.isotope({ filter: filter.join(strategy) });
 
 			if($('body').hasClass('single-mmtile') || Modernizr.mq('only screen and (max-width: 1220px)')) {
 				$('html, body').animate({

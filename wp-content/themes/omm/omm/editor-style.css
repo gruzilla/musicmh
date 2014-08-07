@@ -4,7 +4,8 @@ body {
 
 p.license-group {
     background-color: #bec8c8;
-    margin: 0 0 1em 0;
+    padding: 0 0 1em 0;
+    margin: 0 0 1.5em 0;
 }
 
 h3.license-group,
