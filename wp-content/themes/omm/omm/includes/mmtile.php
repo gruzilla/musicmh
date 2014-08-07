@@ -176,7 +176,7 @@
 
                             if ($preview_img_url) { ?>
 
-								<div class="thumb-container">
+								<div class="thumb-container music-tile">
 									<?php
 										$thumb = oy_get_attachment_id_from_src( $preview_img_url );
 										$image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
@@ -256,29 +256,14 @@
 		</div><!-- /.pf-adjuster -->
 	</div><!-- /.pf-gallery-container -->
 	<script>
-		/*
 		(function($) {
-			$('.project-link').on('click tap', function(event) {
+			$('.music-tile').on('click tap', function(event) {
 				event.preventDefault();
 				event.stopPropagation();
 
-				var showPlayer = $(this).data('showPlayer');
-
-				if (showPlayer) {
-					$(this).find('h3').show();
-					console.debug($(this).find('.player'));
-					$(this).find('.player').hide();
-					$(this).data('showPlayer', false);
-				} else {
-					$(this).find('h3').hide();
-					console.debug(this);
-					console.debug($(this).find('.player').length);
-					$(this).find('.player').show();
-					$(this).data('showPlayer', true);
-				}
+                $(this).find('.player').fadeToggle(500);
 			});
 		})(jQuery);
-		/* */
 	</script>
 
 <?php } // end if ?>
