@@ -13,6 +13,8 @@
                 $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true );
                 $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true );
                 $color = get_post_meta( $post->ID, 'onioneye_color', true );
+                $license = get_post_meta( $post->ID, 'onioneye_license', true );
+                $editable = get_post_meta( $post->ID, 'onioneye_editable', true );
                 break;
             case 'mmimagetile':
                 $image0 = get_post_meta( $post->ID, 'onioneye_image0', true );

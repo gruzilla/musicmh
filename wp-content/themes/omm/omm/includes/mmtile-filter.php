@@ -30,9 +30,10 @@
 <?php // Display the category filter, if at least one category exists. ?>
 <?php if ($category_count) { ?>
 
-	<p class="header-title"><?php _e( 'Filter', 'onioneye' ); ?></p>
+    <h4><?php _e( 'Filter', 'onioneye' ); ?></h4>
 
-	<ul class="mmtile-filter sep group">
+    <div class="col2 sep">
+	<ul class="mmtile-filter group">
 
 		<?php
 		$all_link = '#';
@@ -55,7 +56,7 @@
 			<a href="<?php echo $all_link ?>" data-filter="*" class="filter-all group" title="<?php esc_attr_e( 'View all items', 'onioneye' ); ?>"><?php _e( 'All', 'onioneye' ); ?></a>
 		</li>
 
-		<?php foreach ( $terms as $term ) {
+		<?php $nextFirst = true; foreach ( $terms as $i => $term ) {
 
 				//Always check if it's an error before continuing. get_term_link() can be finicky sometimes
 				$term_link = get_term_link( $term, 'mmtile_category' );
@@ -72,6 +73,20 @@
 
                 if (!empty($term->parent)) {
                     $classes[] = 'child';
+                    if ($nextFirst) {
+                        $classes[] = 'first';
+                        $nextFirst = false;
+                    }
+                    if (count($terms) > $i && empty($terms[$i+1]->parent)) {
+                        $classes[] = 'last';
+                    }
+                    if ($i > 3) {
+                        $classes[] = 'second';
+                    }
+                } else {
+                    $nextFirst = true;
+                    echo '</ul><ul class="mmtile-filter group">';
+                    continue;
                 }
 
                 echo '<li';
@@ -95,5 +110,5 @@
 			} ?>
 
 	</ul><!-- /.mmtile-filter -->
-
+    </div>
 <?php } ?>

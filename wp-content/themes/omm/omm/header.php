@@ -29,6 +29,7 @@
   	<!-- RSS and pingback -->
   	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
   	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico" />
 
 	<!-- wordpress head functions -->
 	<?php wp_head(); ?>
@@ -135,6 +136,7 @@
 					</div>
 				<?php } ?>
 
+                <div class="fixed-on-scrolling">
                 <?php if($category_count) { ?>
 
                     <?php get_template_part('includes/mmtile-filter'); ?>
@@ -143,11 +145,12 @@
 
                 <?php if ($is_menu_existent) { ?>
 
-					<p class="header-title"><?php _e( 'Menu', 'onioneye' ); ?></p>
+					<h4><?php _e( 'Menu', 'onioneye' ); ?></h4>
 
-					<?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => 'nav', 'menu' => 'custom_menu', 'container_class' => 'group', 'menu_class' => 'menu sep', 'depth' => 2, 'walker' => new Nfr_Menu_Walker() ) ); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => 'nav', 'menu' => 'custom_menu', 'container_class' => 'group', 'menu_class' => 'menu col2', 'depth' => 2, 'walker' => new Nfr_Menu_Walker() ) ); ?>
 
 				<?php } ?>
+                </div>
 
 				<?php if($is_social_existent) { ?>
 

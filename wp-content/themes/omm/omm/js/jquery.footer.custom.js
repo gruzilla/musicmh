@@ -28,7 +28,7 @@
             if (selector == '*') {
                 $('.mmtile-filter li').removeClass('active');
             } else {
-                $('.mmtile-filter li:first-child').removeClass('active');
+                $('.mmtile-filter:first-child li:first-child').removeClass('active');
             }
 
             $(this).parent().toggleClass('active');
@@ -37,7 +37,7 @@
             var filter = [];
 
             if ($active.length === 0) {
-                $('.mmtile-filter li:first-child').addClass('active');
+                $('.mmtile-filter:first-child li:first-child').addClass('active');
                 filter.push('*');
             } else {
                 $active.each(function() {
@@ -59,6 +59,25 @@
 				}, 800);
 			}
 		});
+
+
+        console.log('registering scroll listener');
+        var elementPosition = $('.fixed-on-scrolling').offset();
+
+        $(window).scroll(function(){
+            if($(window).scrollTop() > elementPosition.top){
+                $('.fixed-on-scrolling').css({
+                    'position': 'fixed',
+                    'top': '0',
+                    'padding-right': '4em'
+                });
+            } else {
+                $('.fixed-on-scrolling').css({
+                    'position': 'static',
+                    'padding-right': '0'
+                });
+            }
+        });
 	}
 
 	/* Initialize Isotope */

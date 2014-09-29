@@ -177,7 +177,7 @@
 		color: #191919;
 	}
 
-	p,
+    p,
 	h1,
 	h2,
 	h3,
@@ -236,8 +236,8 @@
 	.h4,
 	.h5,
 	.h6 {
-		font-weight: 300;
-		color: #222;
+        font-family: 'Teko Bold', 'Open Sans', sans-serif;
+        color: rgba(0, 0, 0, 0.6);
 	}
 
 
@@ -433,7 +433,7 @@
     ........................................................................................................................................ */
 
     .main-container {
-    	padding: 0 0 0 4em; /* 64px */
+    	padding: 0 0 0 2em; /* 32px */
     }
 		.full-height {
 			background: #f5f5f5;
@@ -442,7 +442,7 @@
 				float: left;
 				width: 100%;
 				min-height: 100vh; /* 100vh = the full height of the window */
-			    border-left: 250px solid white;
+			    border-left: 350px solid white;
 				padding-top: 2.625em; /* 42px */
 				padding-bottom: 0.875em; /* 14px */
 
@@ -535,8 +535,8 @@
 	 */
     .header {
     	float: left;
-	    width: 250px;
-	    margin-right: -250px;
+	    width: 350px;
+	    margin-right: -350px;
 	    position: relative;
 		padding: 0 4em 0.875em 0; /* 0 64px 14px 0 */
 
@@ -588,6 +588,17 @@
 			content: " ";
 		}
 
+        .col2 {
+            overflow: hidden;
+            margin-left: -20px;
+            padding-left: 20px;
+        }
+
+        .col2 > * {
+            width: 50%;
+            float: left;
+        }
+
 			/**
 			 * Header links, header titles, and main search field text styles
 			 */
@@ -622,12 +633,11 @@
 				.contact-info a:after {
 					display: block;
 					position: absolute;
-					left: -29px;
+					left: -19px;
 					top: 0;
-					width: 29px;
+					width: 19px;
 					height: 100%;
 
-					content: " ";
 					opacity: .25;
 
 					transition: .2s opacity ease;
@@ -682,10 +692,10 @@
 				#main-search-submit {
 					display: block;
 					position: absolute;
-					left: -30px;
+					left: -20px;
 					bottom: 1px;
 					float: right;
-					width: 30px;
+					width: 20px;
 					height: 19px;
 					padding: 0;
 
@@ -1004,13 +1014,39 @@
 						font-weight: 600;
 						text-align: center;
 						color: #555555;
-
-						transition: .4s all ease;
 					}
 						.no-touch .project-link:hover .project-title {
-							opacity: 1;
-							transform: translateY(-50%);
+							display: none;
 						}
+
+                    .mmtile-gallery .project-background {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .no-touch .mmtile-gallery .project-link:hover .project-background {
+                        display: none;
+                    }
+
+                    .mmtile-gallery .project-play {
+                        display: none;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                    }
+                    .mmtile-gallery .project-play img {
+                        margin: 64px 0 0 0;
+                    }
+
+                    .no-touch .mmtile-gallery .project-link:hover .project-play {
+                        display: block;
+                    }
 
 	/**
 	 * Isotope Filtering
@@ -2662,12 +2698,22 @@
 /*  24. hacked terms list
     ........................................................................................................................................ */
 
+/*
 .mmtile-filter .child {
     margin-left: 10px;
 }
+*/
 
 .mmtile-filter li span {
     margin-top: 10px;
+}
+
+.mmtile-filter {
+    margin-bottom: 10px;
+}
+
+.mmtile-filter .active a {
+    color: #222;
 }
 
 /*  25. custom css classes for styling rich-text
@@ -2681,10 +2727,51 @@ p.license-group {
 h3.license-group,
 h4.license-group,
 h5.license-group {
-    font-family: 'Teko', 'Open Sans', sans-serif;
     background-color: #bec8c8;
     margin: 0;
     padding-top: 1em;
     font-size: 2em;
     text-transform: uppercase;
+}
+
+h4 {
+    text-transform: uppercase;
+}
+
+.header h4 {
+    clear: both;
+}
+
+.fixed-on-scrolling {
+    max-width: 350px;
+}
+
+.player h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    line-height: 1.5em;
+    color: rgba(255, 255, 255, 0.7);
+}
+.player .genre {
+    font-family: 'Teko', 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    line-height: 1em;
+}
+
+.player .detailinfo {
+    width: 30%;
+    float: left;
+    text-align: left;
+    font-size: 0.6em;
+    line-height: 3em;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+.player {
+    color: rgba(255, 255, 255, 0.7);
 }

@@ -65,6 +65,18 @@ function twpb_alerts_metaboxes( $meta_boxes ) {
 				'id' => $prefix . 'color',
 				'type' => 'colorpicker'
 			),
+            array(
+                'name' => __('License', 'mmtilemetaboxes'),
+                'desc' => __('License information', 'mmtilemetaboxes'),
+                'id'   => $prefix . 'license',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Editable', 'mmtilemetaboxes'),
+                'desc' => __('If the track is editable.', 'mmtilemetaboxes'),
+                'id'   => $prefix . 'editable',
+                'type' => 'checkbox',
+            ),
 			array(
 				'name' => __('Publication Date', 'mmtilemetaboxes'),
 				'desc' => __('Display the publication date of this post in the live view?', 'mmtilemetaboxes'),

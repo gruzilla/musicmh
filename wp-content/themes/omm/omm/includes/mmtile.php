@@ -59,6 +59,8 @@
                             $gumroad_url = get_post_meta( $post->ID, 'onioneye_gumroad', true );
                             $bpm = get_post_meta( $post->ID, 'onioneye_bpm', true );
                             $color = get_post_meta( $post->ID, 'onioneye_color', true );
+                            $license = get_post_meta( $post->ID, 'onioneye_license', true );
+                            $editable = get_post_meta( $post->ID, 'onioneye_editable', true );
 
                             $onclick = 'this.classList.toggle(\'tile-flip-hover\')';
                             break;
@@ -197,22 +199,31 @@
 										</div><!-- /.preview-img-wrap -->
 
 										<?php
-											$addCss = '';
+                                            $addCss = '';
+                                            $addCssFull = '';
 											if ($color) {
 												$dec = hex2rgb($color);
-												$addCss = 'background-color: rgba('.join(',', $dec) . ', 0.7)';
+                                                $addCss = 'background-color: rgba('.join(',', $dec) . ', 0.7)';
+                                                $addCssFull = 'background-color: rgba('.join(',', $dec) . ', 1)';
 											}
 										?>
-										<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; <?php echo $addCss; ?>"></div>
+										<div class="project-background" style="<?php echo $addCss; ?>"></div>
 
-										<h3 class="project-title caps" style="top: 40%; opacity:1; color: white; font-size:1.75rem; font-family:'Teko','Open Sans',sans-serif">
+										<h3 class="project-title caps" style="top: 40%; opacity:1; color: white; font-size:1.75rem; font-family:'Teko Bold','Open Sans',sans-serif">
 											<a href="<?php the_permalink(); ?>" style="color:#fff"><?php the_title(); ?></a><br />
 											<span style="font-weight:400; font-size: 1.25rem;"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
 										</h3>
+
+                                        <div class="project-play">
+                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/play.png">
+                                        </div>
 									</div>
-									<div class="player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; background-color: #fff;">
+									<div class="player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; <?php echo $addCssFull; ?>">
+                                        <h4><?php the_title(); ?></h4>
+                                        <span class="genre"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
+
 										<?php if($soundcloud_url) { ?>
-										<iframe width="80%" height="166" scrolling="no" frameborder="no" style="margin: 20% auto auto" src="<?php
+										<iframe width="80%" height="166" scrolling="no" frameborder="no" style="margin: 0 auto" src="<?php
 											$urlParams = array(
 												'url' => $soundcloud_url,
 												'auto_play' => 'false',
@@ -237,9 +248,15 @@
 										<?php } ?>
 
 
-										<?php if($gumroad_url) { ?>
-										<a href="<?php echo $gumroad_url ?>" class="gumroad-button">Buy my product</a>
-										<?php } ?>
+                                        <div style="width: 80%; margin: auto">
+                                            <div class="detailinfo">
+                                                <?php if ($license) { echo $license; } ?><br/>
+                                                <?php echo ($editable) ? 'Editable' : 'No editing'; ?>
+                                            </div>
+                                            <?php if($gumroad_url) { ?>
+                                                <a href="<?php echo $gumroad_url ?>" class="gumroad-button">Buy my product</a>
+                                            <?php } ?>
+                                        </div>
 									</div>
 
 								</div><!-- /.thumb-container -->

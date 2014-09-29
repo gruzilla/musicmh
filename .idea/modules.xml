@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/wordpress.iml" filepath="$PROJECT_DIR$/.idea/wordpress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/musicmenu.iml" filepath="$PROJECT_DIR$/.idea/musicmenu.iml" />
     </modules>
   </component>
 </project>
