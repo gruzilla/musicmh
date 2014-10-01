@@ -2169,18 +2169,6 @@
 			.page-content, .blog-container, .page-container, .single-mmtile-container {
 				padding: 0 3em;
 			}
-				.header {
-					width: 220px;
-					margin-right: -220px;
-					padding-right: 3em;
-				}
-				.main-content {
-					border-left-width: 220px;
-				}
-
-        .fixed-on-scrolling.fixed {
-            padding-right: 11em
-        }
     }
 
 	/**
