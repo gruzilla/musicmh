@@ -1026,6 +1026,15 @@
 							display: none;
 						}
 
+                    .front .project-title {
+                        top: 40%;
+                        opacity: 1;
+                        color: white;
+                        font-size: 1.75rem;
+                        font-family: 'Teko', 'Open Sans', sans-serif;
+                        font-weight: 700;
+                    }
+
                     .mmtile-gallery .project-background {
                         position: absolute;
                         top: 0;

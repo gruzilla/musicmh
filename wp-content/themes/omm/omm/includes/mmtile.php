@@ -209,7 +209,7 @@
 										?>
 										<div class="project-background" style="<?php echo $addCss; ?>"></div>
 
-										<h3 class="project-title caps" style="top: 40%; opacity:1; color: white; font-size:1.75rem; font-family:'Teko Bold','Open Sans',sans-serif">
+										<h3 class="project-title caps">
 											<a href="<?php the_permalink(); ?>" style="color:#fff"><?php the_title(); ?></a><br />
 											<span style="font-weight:400; font-size: 1.25rem;"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
 										</h3>
