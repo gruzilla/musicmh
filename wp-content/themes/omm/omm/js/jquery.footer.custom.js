@@ -60,24 +60,6 @@
 			}
 		});
 
-
-        console.log('registering scroll listener');
-        var elementPosition = $('.fixed-on-scrolling').offset();
-
-        $(window).scroll(function(){
-            if($(window).scrollTop() > elementPosition.top){
-                $('.fixed-on-scrolling').css({
-                    'position': 'fixed',
-                    'top': '0',
-                    'padding-right': '4em'
-                });
-            } else {
-                $('.fixed-on-scrolling').css({
-                    'position': 'static',
-                    'padding-right': '0'
-                });
-            }
-        });
 	}
 
 	/* Initialize Isotope */
@@ -329,4 +311,26 @@
 	}
 
 
+    $(document).ready(function() {
+        var elementPosition = $('.fixed-on-scrolling').offset();
+
+        $(window).scroll(function(){
+            var $scrolling = $('.fixed-on-scrolling');
+            if ($scrolling.height() > $('#isotope-trigger').height()) {
+                return;
+            }
+            if($(window).scrollTop() > elementPosition.top){
+                $scrolling.css({
+                    'position': 'fixed',
+                    'top': '0',
+                    'padding-right': '4em'
+                });
+            } else {
+                $scrolling.css({
+                    'position': 'static',
+                    'padding-right': '0'
+                });
+            }
+        });
+    });
 })( jQuery );

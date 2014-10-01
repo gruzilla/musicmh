@@ -21,15 +21,42 @@ function oy_add_ie_styles() {
 function oy_add_fonts() {
 
     $protocol = is_ssl() ? 'https' : 'http';
-    wp_enqueue_style( 'oy-open-sans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
-    wp_enqueue_style( 'oy-teko', "$protocol://fonts.googleapis.com/css?family=Teko:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
+    global $wp_styles;
+    // somebody else alredy registers open-sans
+    // wp_enqueue_style( 'oy-open-sans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:400,500,300&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
+    wp_enqueue_style( 'oy-teko', "$protocol://fonts.googleapis.com/css?family=Teko:300,400,500,600,700&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext" );
+}
 
+function oy_fix_prefixfree_fonts($tag){
+    $customXML = new SimpleXMLElement($tag);
+    $attrs = $customXML->attributes();
+    if (!isset($attrs->id)) {
+        return $tag;
+    }
+    $id = (string)$attrs->id;
+    $values = explode('-', $id);
+
+    if (array_pop($values) !== 'css') {
+        return $tag;
+    }
+
+    $id = join('-', $values);
+
+    if (!in_array($id, array('oy-teko', 'oy-open-sans', 'open-sans'))) {
+        return $tag;
+    }
+
+    $customXML->addAttribute('data-noprefix', 'data-noprefix');
+    $dom = dom_import_simplexml($customXML);
+
+    return $dom->ownerDocument->saveXML($dom->ownerDocument->documentElement);
 }
 
 add_action( 'wp_enqueue_scripts', 'oy_add_main_styles', 1 );
 add_action( 'wp_enqueue_scripts', 'oy_add_ie_styles', 2 );
 add_action( 'wp_enqueue_scripts', 'oy_add_fonts', 3 );
 
+add_filter('style_loader_tag', 'oy_fix_prefixfree_fonts');
 
 /*-----------------------------------------------------------------------------------*/
 /*	Register and Enqueue Theme Scripts

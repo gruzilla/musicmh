@@ -236,7 +236,8 @@
 	.h4,
 	.h5,
 	.h6 {
-        font-family: 'Teko Bold', 'Open Sans', sans-serif;
+        font-family: 'Teko', 'Open Sans', sans-serif;
+        font-weight: 700;
         color: rgba(0, 0, 0, 0.6);
 	}
 
