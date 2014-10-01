@@ -600,6 +600,12 @@
             float: left;
         }
 
+        .fixed-on-scrolling.fixed {
+            position: fixed;
+            top: 0;
+            padding-right: 4em
+        }
+
 			/**
 			 * Header links, header titles, and main search field text styles
 			 */
@@ -2171,7 +2177,11 @@
 				.main-content {
 					border-left-width: 220px;
 				}
-	}
+
+        .fixed-on-scrolling.fixed {
+            padding-right: 11em
+        }
+    }
 
 	/**
     * The main breakpoint
@@ -2296,6 +2306,7 @@
 				.header nav,
 				.header .social-networking,
 				.header .mmtile-filter,
+                .fixed-on-scrolling,
 				.header .copyright {
 					display: none; /* hide the search, titles, navigation, copyright, and the mmtile filter in the header */
 				}

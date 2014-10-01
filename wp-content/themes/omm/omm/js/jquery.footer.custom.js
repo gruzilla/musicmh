@@ -320,16 +320,9 @@
                 return;
             }
             if($(window).scrollTop() > elementPosition.top){
-                $scrolling.css({
-                    'position': 'fixed',
-                    'top': '0',
-                    'padding-right': '4em'
-                });
+                $scrolling.addClass('fixed');
             } else {
-                $scrolling.css({
-                    'position': 'static',
-                    'padding-right': '0'
-                });
+                $scrolling.removeClass('fixed');
             }
         });
     });
