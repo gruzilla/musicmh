@@ -1035,6 +1035,16 @@
                         font-weight: 700;
                     }
 
+                    .front .project-title a {
+                        color: #fff;
+                    }
+                    .front .project-title span {
+                        font-weight:400;
+                        font-size: 1.25rem;
+                    }
+
+
+
                     .mmtile-gallery .project-background {
                         position: absolute;
                         top: 0;
@@ -1717,7 +1727,16 @@
 		font-weight: 500;
 	}
 
-	/* pre { white-space: pre; /* CSS2 */ white-space: pre-wrap; /* CSS 2.1 */ white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */ word-wrap: break-word; /* IE */ } */
+	/* pre {7
+	    white-space: pre;
+	    /* CSS2 * /
+	    white-space: pre-wrap;
+	    /* CSS 2.1 * /
+	    white-space: pre-line;
+	    /* CSS 3 (and 2.1 as well, actually) * /
+	    word-wrap: break-word;
+	    /* IE * /
+	} */
 	.the-content pre {
 		overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
 		white-space: pre-wrap; /* css-3 */
@@ -2757,9 +2776,9 @@ h4 {
 
 .player h4 {
     margin: 0;
-    padding: 0;
-    font-size: 2em;
-    line-height: 1.5em;
+    padding: 0.5em 0 0 0;
+    font-size: 1.5em;
+    line-height: 0.5em;
     color: rgba(255, 255, 255, 0.7);
 }
 .player .genre {
@@ -2767,18 +2786,18 @@ h4 {
     text-transform: uppercase;
     margin: 0;
     padding: 0;
-    font-size: 1.5em;
-    line-height: 1em;
+    font-size: 1em;
+    line-height: 0.5em;
 }
 
 .player .detailinfo {
-    width: 30%;
-    float: left;
-    text-align: left;
-    font-size: 0.6em;
-    line-height: 3em;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 1em;
     text-transform: uppercase;
     font-family: sans-serif;
+    padding: 0 0 0.5em 0;
+    margin: 0;
 }
 
 .player {

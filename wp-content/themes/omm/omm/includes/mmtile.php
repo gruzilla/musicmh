@@ -210,8 +210,8 @@
 										<div class="project-background" style="<?php echo $addCss; ?>"></div>
 
 										<h3 class="project-title caps">
-											<a href="<?php the_permalink(); ?>" style="color:#fff"><?php the_title(); ?></a><br />
-											<span style="font-weight:400; font-size: 1.25rem;"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
+											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br />
+											<span><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
 										</h3>
 
                                         <div class="project-play">
@@ -223,7 +223,7 @@
                                         <span class="genre"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
 
 										<?php if($soundcloud_url) { ?>
-										<iframe width="80%" height="166" scrolling="no" frameborder="no" style="margin: 0 auto" src="<?php
+										<iframe width="80%" height="160" scrolling="no" frameborder="no" style="margin: 0 auto" src="<?php
 											$urlParams = array(
 												'url' => $soundcloud_url,
 												'auto_play' => 'false',
