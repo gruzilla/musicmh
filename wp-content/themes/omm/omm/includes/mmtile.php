@@ -26,10 +26,14 @@
 
 				<?php
 				//output the latest projects from the 'my_mmtile' custom post type
+                $morePosts = $loop2->have_posts();
                 for ($i = 0; $i < $loop->post_count + $loop2->post_count; $i++) {
 
-                    if (1 === ($i % 2) && $loop2->have_posts()) {
+                    $morePosts = $morePosts && $loop2->have_posts();
+                    $whichLoop = '0';
+                    if (1 === ($i % 2) && $morePosts) {
                         $loop2->the_post();
+                        $whichLoop = '2';
                     } else {
                         $loop->the_post();
                     }
@@ -50,6 +54,7 @@
                     $image0 = null;
                     $image1 = null;
                     $image2 = null;
+                    $backgroundImage = null;
 
                     switch ($post->post_type) {
                         case 'mmtile':
@@ -76,6 +81,51 @@
                             $image1 = get_post_meta( $post->ID, 'onioneye_image1', true );
                             $image2 = get_post_meta( $post->ID, 'onioneye_image2', true );
 
+                            if ($image0) {
+                                $thumb = oy_get_attachment_id_from_src( $image0 );
+                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
+                                $image0_full_width = $thumbInfo[1];
+                                $image0_full_height = $thumbInfo[2];
+
+                                $url = $image0;
+                                if ( $image0_full_width > $desired_width || $image0_full_height > $desired_height ) {
+                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
+                                    $url = $image['url'];
+                                }
+                                $image0 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                $backgroundImage = $url;
+                            }
+                            if ($image1) {
+                                $thumb = oy_get_attachment_id_from_src( $image1 );
+                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
+                                $image1_full_width = $thumbInfo[1];
+                                $image1_full_height = $thumbInfo[2];
+
+                                $url = $image1;
+                                if ( $image1_full_width > $desired_width || $image1_full_height > $desired_height ) {
+                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
+                                    $url = $image['url'];
+                                }
+                                $image1 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                $backgroundImage = $url;
+                            }
+                            if ($image2) {
+                                $thumb = oy_get_attachment_id_from_src( $image2 );
+                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
+                                $image2_full_width = $thumbInfo[1];
+                                $image2_full_height = $thumbInfo[2];
+
+                                $url = $image2;
+                                if ( $image2_full_width > $desired_width || $image2_full_height > $desired_height ) {
+                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
+                                    $url = $image['url'];
+                                }
+                                $image2 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                $backgroundImage = $url;
+                            }
+
+                            $backgroundImage = $image2 ? $image2 : ($image1 ? $image1 : $image0);
+
                             $link = get_post_meta( $post->ID, 'onioneye_link', true );
                             if (empty($link) || strtolower(substr($link, 0, 4)) !== 'http') {
                                 $onclick = 'return false;';
@@ -86,7 +136,7 @@
                     }
                     ?>
 
-					<div data-id="id-<?php echo $post->ID; ?>" class="isotope-item mmtile-item mmtile-item-<?php the_ID(); ?> <?php $terms = get_the_terms( $post -> ID, 'mmtile_category' ); if ( !empty( $terms ) ) { foreach( $terms as $term ) { echo $term -> slug . ' '; } } ?>">
+					<div data-id="id-<?php echo $post->ID; ?>" class="isotope-item type-<?php echo $post->post_type; ?> mmtile-item mmtile-item-<?php the_ID(); ?> <?php $terms = get_the_terms( $post -> ID, 'mmtile_category' ); if ( !empty( $terms ) ) { foreach( $terms as $term ) { echo $term -> slug . ' '; } } ?>">
 
 						<div class="project-link" style="cursor: pointer" onclick="<?php echo $onclick ?>">
 
@@ -96,70 +146,43 @@
                                 <div class="thumb_container">
                                     <div class="front">
                                         <div id="mm-gallery-<?php echo $post->ID ?>" class="mm-gallery">
-                                            <?php
-                                            if ($image0) {
-                                                $thumb = oy_get_attachment_id_from_src( $image0 );
-                                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
-                                                $image0_full_width = $thumbInfo[1];
-                                                $image0_full_height = $thumbInfo[2];
-
-                                                $url = $image0;
-                                                if ( $image0_full_width > $desired_width || $image0_full_height > $desired_height ) {
-                                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                                    $url = $image['url'];
+                                            <div class="mm-gallery-bg">
+                                                <?php
+                                                if ($backgroundImage) {
+                                                    echo $backgroundImage;
                                                 }
-                                                echo '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" style="display:block" />';
-                                            }
-                                            if ($image1) {
-                                                $thumb = oy_get_attachment_id_from_src( $image1 );
-                                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
-                                                $image1_full_width = $thumbInfo[1];
-                                                $image1_full_height = $thumbInfo[2];
-
-                                                $url = $image1;
-                                                if ( $image1_full_width > $desired_width || $image1_full_height > $desired_height ) {
-                                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                                    $url = $image['url'];
+                                                ?>
+                                            </div>
+                                            <div class="mm-gallery-fg">
+                                                <?php
+                                                if ($image0) {
+                                                    echo $image0;
                                                 }
-                                                echo '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
-                                            }
-                                            if ($image2) {
-                                                $thumb = oy_get_attachment_id_from_src( $image2 );
-                                                $thumbInfo = wp_get_attachment_image_src($thumb, 'full');
-                                                $image2_full_width = $thumbInfo[1];
-                                                $image2_full_height = $thumbInfo[2];
-
-                                                $url = $image2;
-                                                if ( $image2_full_width > $desired_width || $image2_full_height > $desired_height ) {
-                                                    $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                                    $url = $image['url'];
+                                                if ($image1) {
+                                                    echo $image1;
                                                 }
-                                                echo '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
-                                            }
-                                            ?>
+                                                if ($image2) {
+                                                    echo $image2;
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
                                         <script>
                                             (function($) {
-                                                window.setInterval(function() {
-                                                    var $imgs = $('#mm-gallery-<?php echo $post->ID ?> img');
-                                                    var visImg = Math.max(0, $('#mm-gallery-<?php echo $post->ID ?> img:visible').index());
-                                                    var index = (visImg + 1) % $imgs.length;
+                                                window.setInterval(
+                                                    function() {
+                                                         $lastImg = $('#mm-gallery-<?php echo $post->ID ?> .mm-gallery-fg img:visible:last');
+                                                        if (!$lastImg || $lastImg.length === 0) {
+                                                            $('#mm-gallery-<?php echo $post->ID ?> .mm-gallery-fg img').show();
+                                                            $lastImg = $('#mm-gallery-<?php echo $post->ID ?> .mm-gallery-fg img:visible:last');
+                                                        }
 
-                                                    $($imgs.get(visImg)).css({
-                                                        'z-index': 1,
-                                                        'position': 'absolute',
-                                                        'top': 0,
-                                                        'left': 0
-                                                    }).fadeOut(<?php echo $animationDuration; ?>, function() {
-                                                        $(this).css({
-                                                            'z-index': '',
-                                                            'position': '',
-                                                            'top': '',
-                                                            'left': ''
-                                                        });
-                                                    });
-                                                    $($imgs.get(index)).show();
-                                                }, <?php echo $switchspeed; ?>);
+                                                        $lastImg.fadeOut(
+                                                            <?php echo $animationDuration; ?>
+                                                        );
+                                                    },
+                                                    <?php echo $switchspeed; ?>
+                                                );
                                             })(jQuery);
                                         </script>
                                     </div>

@@ -991,16 +991,11 @@
 				.project-link .thumb-container {
 					position: relative;
 				}
-					.mmtile-gallery .preview-img-wrap {
-						transition: .4s all ease;
-					}
 						.no-touch .project-link:hover .preview-img-wrap {
 							opacity: .1;
 						}
 						.project-link .preview-img {
 							vertical-align: bottom;
-
-							transition: .4s all ease;
 						}
 					.mmtile-gallery .project-title {
 						width: 100%;
@@ -2749,9 +2744,13 @@
 .project-link .mm-gallery {
     position: relative;
 }
-.project-link .mm-gallery img {
-    display: none;
-    z-index: 0;
+.project-link .mm-gallery-fg,
+.project-link .mm-gallery-fg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /*  24. hacked terms list
