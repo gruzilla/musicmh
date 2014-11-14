@@ -215,15 +215,19 @@
 										</h3>
 
                                         <div class="project-play">
-                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/play.png">
+                                            <div class="dummy"></div>
+
+                                            <div class="img-container">
+                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/play.png">
+                                            </div>
                                         </div>
 									</div>
 									<div class="player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; <?php echo $addCssFull; ?>">
                                         <h4><?php the_title(); ?></h4>
-                                        <span class="genre"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</span>
+                                        <div class="genre"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</div>
 
 										<?php if($soundcloud_url) { ?>
-										<iframe width="80%" height="160" scrolling="no" frameborder="no" style="margin: 0 auto" src="<?php
+										<iframe width="80%" height="40%" scrolling="no" frameborder="no" style="margin: 0 auto; display:block" src="<?php
 											$urlParams = array(
 												'url' => $soundcloud_url,
 												'auto_play' => 'false',
@@ -250,7 +254,7 @@
 
                                         <div style="width: 80%; margin: auto">
                                             <div class="detailinfo">
-                                                <?php if ($license) { echo $license; } ?><br/>
+                                                <?php if ($license) { echo $license . '<br/>'; } ?>
                                                 <?php echo ($editable) ? 'Editable' : 'No editing'; ?>
                                             </div>
                                             <?php if($gumroad_url) { ?>
