@@ -90,10 +90,17 @@
                                 $url = $image0;
                                 if ( $image0_full_width > $desired_width || $image0_full_height > $desired_height ) {
                                     $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                    $url = $image['url'];
+                                    if (is_array($image)) {
+                                        $url = $image['url'];
+                                    } else {
+                                        $url = null;
+                                    }
                                 }
-                                $image0 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
-                                $backgroundImage = $url;
+                                if ($url) {
+                                    $image0 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                } else {
+                                    $image0 = null;
+                                }
                             }
                             if ($image1) {
                                 $thumb = oy_get_attachment_id_from_src( $image1 );
@@ -104,10 +111,17 @@
                                 $url = $image1;
                                 if ( $image1_full_width > $desired_width || $image1_full_height > $desired_height ) {
                                     $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                    $url = $image['url'];
+                                    if (is_array($image)) {
+                                        $url = $image['url'];
+                                    } else {
+                                        $url = null;
+                                    }
                                 }
-                                $image1 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
-                                $backgroundImage = $url;
+                                if ($url) {
+                                    $image1 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                } else {
+                                    $image1 = null;
+                                }
                             }
                             if ($image2) {
                                 $thumb = oy_get_attachment_id_from_src( $image2 );
@@ -118,10 +132,17 @@
                                 $url = $image2;
                                 if ( $image2_full_width > $desired_width || $image2_full_height > $desired_height ) {
                                     $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-                                    $url = $image['url'];
+                                    if (is_array($image)) {
+                                        $url = $image['url'];
+                                    } else {
+                                        $url = null;
+                                    }
                                 }
-                                $image2 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
-                                $backgroundImage = $url;
+                                if ($url) {
+                                    $image2 = '<img class="preview-img" src="' . $url . '" alt="' . the_title('', '', false) . '" />';
+                                } else {
+                                    $image2 = null;
+                                }
                             }
 
                             $backgroundImage = $image2 ? $image2 : ($image1 ? $image1 : $image0);
@@ -199,13 +220,14 @@
                                 }
                             }
 
-                            if ($preview_img_url) { ?>
+                            if ($preview_img_url) {
+                                $thumb = oy_get_attachment_id_from_src( $preview_img_url );
+                                $image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
+
+                                if (is_array($image) && !empty($image['url'])) {
+                                ?>
 
 								<div class="thumb-container music-tile">
-									<?php
-										$thumb = oy_get_attachment_id_from_src( $preview_img_url );
-										$image = vt_resize( $thumb, '', $desired_width, $desired_height, true );
-									?>
 
 									<div class="front">
 										<div>
@@ -246,11 +268,12 @@
                                         </div>
 									</div>
 									<div class="player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; <?php echo $addCssFull; ?>">
+                                        <div class="vert-center">
                                         <h4><?php the_title(); ?></h4>
                                         <div class="genre"><?php echo $genre ? $genre . ' - ' : ''; echo $bpm ?> BPM</div>
 
 										<?php if($soundcloud_url) { ?>
-										<iframe width="80%" height="40%" scrolling="no" frameborder="no" style="margin: 0 auto; display:block" src="<?php
+										<iframe width="80%" height="40%" scrolling="no" frameborder="no" style="margin: 0 auto; display:block" class="soundcloud" src="<?php
 											$urlParams = array(
 												'url' => $soundcloud_url,
 												'auto_play' => 'false',
@@ -261,7 +284,8 @@
 												'visual' => 'false',
 												'color' => $color ? $color : 'ff5500',
 												'sharing' => 'false',
-												'show_playcount' => 'false'
+												'show_playcount' => 'false',
+                                                'show_artwork' => 'false'
 											);
 
 											$q = array();
@@ -284,11 +308,13 @@
                                                 <a href="<?php echo $gumroad_url ?>" class="gumroad-button">Buy my product</a>
                                             <?php } ?>
                                         </div>
+
+                                    </div>
 									</div>
 
 								</div><!-- /.thumb-container -->
 
-							<?php } ?>
+							<?php }} ?>
 
 						</div><!-- /.project-link -->
 

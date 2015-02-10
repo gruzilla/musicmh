@@ -40,7 +40,7 @@
             <? }?>
 
 			<?php if($soundcloud_url) { ?>
-			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="<?php
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" class="soundcloud" src="<?php
 				$urlParams = array(
 					'url' => $soundcloud_url,
 					'auto_play' => 'false',
@@ -51,7 +51,8 @@
 					'visual' => 'false',
 					'color' => 'ff5500',
 					'sharing' => 'false',
-					'show_playcount' => 'false'
+					'show_playcount' => 'false',
+					'show_artwork' => 'false'
 				);
 
 				$q = array();

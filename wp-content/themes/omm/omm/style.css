@@ -224,13 +224,11 @@
 		line-height: 1.866em; /* 28px */
 	}
 
-	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6,
-	.h1,
 	.h2,
 	.h3,
 	.h4,
@@ -241,6 +239,13 @@
         color: rgba(0, 0, 0, 0.6);
 	}
 
+	h1,
+	.h1 {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 700;
+		font-style: italic;
+		color: #000;
+	}
 
 
 /*  05. Forms
@@ -444,7 +449,7 @@
 				width: 100%;
 				min-height: 100vh; /* 100vh = the full height of the window */
 			    border-left: 350px solid white;
-				padding-top: 2.625em; /* 42px */
+				padding-top: 176px; /* 42px */
 				padding-bottom: 0.875em; /* 14px */
 
 				background: #f5f5f5; /* light grey main content color */
@@ -2792,7 +2797,7 @@ h5.license-group {
     text-transform: uppercase;
 }
 
-h4 {
+h4, h5 {
     text-transform: uppercase;
 }
 
@@ -2832,4 +2837,12 @@ h4 {
 
 .player {
     color: rgba(255, 255, 255, 0.7);
+}
+
+.player .vert-center {
+	position: absolute;
+	top: 50%;
+	height: 230px;
+	margin-top: -115px;
+	width: 100%;
 }
